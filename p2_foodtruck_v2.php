@@ -160,104 +160,110 @@ $items[3]->Selected = $_POST["Select3"];
 <input type="submit" name="submit" value="Submit" class="submit"/>    
 </form>    
 
-<!-- RECEIPT -->    
-<table>
-    <tr>
-        <td colspan="4" align="center">
-            <h1>Receipt</h1>
-        </td>    
-    </tr>
-    <tr>
-        <th>Item</th>
-        <th colspan="2">Extras</th> 
-        <th colspan="2">Qty</th>
-    </tr>
-    <!--First Item-->
-    <tr>
-        <td>
-            <h3><?php echo $items[0]->Name;?></h3>
-            <p><?php echo $items[0]->Description;?></p>
-        </td>
-        <td>
-            <h3><?php echo $items[0]->Selected;?></h3>
-        </td>
-        <td>
-            <h3><?php echo "$" . $items[0]->Price;?></h3>
-        </td>
-        <td>
-            <h3>x</h3>
-        </td>
-        <td>
-            <h3><?php echo $items[0]->Qty;?></h3>
-        </td>
-    </tr>      
-    <!--Second Item-->
-    <tr>
-        <td>
-            <h3><?php echo $items[1]->Name;?></h3>
-            <p><?php echo $items[1]->Description;?></p>
-        </td>
-        <td>
-            <h3><?php echo $items[1]->Selected;?></h3>
-        </td>
-        <td>
-            <h3><?php echo "$" . $items[0]->Price;?></h3>
-        </td>
-        <td>
-            <h3>x</h3>
-        </td>
-        <td>
-            <h3><?php echo $items[1]->Qty;?></h3>
-        </td>
-    </tr>      
-    <!--Third Item-->
-    <tr>
-        <td>
-            <h3><?php echo $items[2]->Name;?></h3>
-            <p><?php echo $items[2]->Description;?></p>
-        </td>
-        <td>
-            <h3><?php echo $items[2]->Selected;?></h3>
-        </td>
-        <td>
-            <h3><?php echo "$" . $items[2]->Price;?></h3>
-        </td>
-        <td>
-            <h3>x</h3>
-        </td>
-        <td>
-            <h3><?php echo $items[2]->Qty;?></h3>
-        </td>
-    </tr>      
-    <!--Fourth Item-->
-    <tr>
-        <td>
-            <h3><?php echo $items[3]->Name;?></h3>
-            <p><?php echo $items[3]->Description;?></p>
-        </td>
-        <td>
-            <h3><?php echo $items[3]->Selected;?></h3>
-        </td>
-        <td>
-            <h3><?php echo "$" . $items[3]->Price;?></h3>
-        </td>
-        <td>
-            <h3>x</h3>
-        </td>
-        <td>
-            <h3><?php echo $items[3]->Qty;?></h3>
-        </td>
-    </tr>
-    <!--Totals-->
-    <tr class="total">
-        <td colspan="3">
-            <h3>SUBTOTAL</h3>
-        </td>
-        <td>
-            <h3><?php echo $items[3]->Qty;?></h3>
-        </td>
-    </tr>
-</table>
+<?php
+    if(isset($_POST['submit'])){
+        echo '    
+            <!-- RECEIPT -->    
+            <table>
+                <tr>
+                    <td colspan="4" align="center">
+                        <h1>Receipt</h1>
+                    </td>    
+                </tr>
+                <tr>
+                    <th>Item</th>
+                    <th colspan="2">Extras</th> 
+                    <th colspan="2">Qty</th>
+                </tr>
+                <!--First Item-->
+                <tr>
+                    <td>
+                        <h3>' . $items[0]->Name . '</h3>
+                        <p>' . $items[0]->Description . '</p>
+                    </td>
+                    <td>
+                        <h3>' . $items[0]->Selected . '</h3>
+                    </td>
+                    <td>
+                        <h3> $' . $items[0]->Price . '</h3>
+                    </td>
+                    <td>
+                        <h3>x</h3>
+                    </td>
+                    <td>
+                        <h3>' . $items[0]->Qty . '</h3>
+                    </td>
+                </tr>      
+                <!--Second Item-->
+                <tr>
+                    <td>
+                        <h3>' . $items[1]->Name . '</h3>
+                        <p>' . $items[1]->Description . '</p>
+                    </td>
+                    <td>
+                        <h3>' . $items[1]->Selected . '</h3>
+                    </td>
+                    <td>
+                        <h3>$' . $items[0]->Price . '</h3>
+                    </td>
+                    <td>
+                        <h3>x</h3>
+                    </td>
+                    <td>
+                        <h3>' . $items[1]->Qty . '</h3>
+                    </td>
+                </tr>      
+                <!--Third Item-->
+                <tr>
+                    <td>
+                        <h3>' . $items[2]->Name . '</h3>
+                        <p>' . $items[2]->Description . '</p>
+                    </td>
+                    <td>
+                        <h3>' . $items[2]->Selected . '</h3>
+                    </td>
+                    <td>
+                        <h3>$' . $items[2]->Price . '</h3>
+                    </td>
+                    <td>
+                        <h3>x</h3>
+                    </td>
+                    <td>
+                        <h3>' . $items[2]->Qty . '</h3>
+                    </td>
+                </tr>      
+                <!--Fourth Item-->
+                <tr>
+                    <td>
+                        <h3>' . $items[3]->Name . '</h3>
+                        <p>' . $items[3]->Description . '</p>
+                    </td>
+                    <td>
+                        <h3>' . $items[3]->Selected . '</h3>
+                    </td>
+                    <td>
+                        <h3>$' . $items[3]->Price . '</h3>
+                    </td>
+                    <td>
+                        <h3>x</h3>
+                    </td>
+                    <td>
+                        <h3>' . $items[3]->Qty . '</h3>
+                    </td>
+                </tr>
+                <!--Totals-->
+                <tr class="total">
+                    <td colspan="3">
+                        <h3>SUBTOTAL</h3>
+                    </td>
+                    <td>
+                        <h3>' . $items[3]->Qty . '</h3>
+                    </td>
+                </tr>
+            </table>
+        ';                  
+    }
+?>
 
 </body>      
 </html>
