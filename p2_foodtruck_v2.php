@@ -15,13 +15,15 @@ class Item {
     public $Qty = 0;
     public $Selected = '';
     public $Extras = array();
+    public $Total = 0;
 
-    public function __construct($Name,$Description,$Price,$Qty,$Selected) {
+    public function __construct($Name,$Description,$Price,$Qty,$Selected,$Total) {
         $this->Name = $Name;
         $this->Description = $Description;
         $this->Price = (float)$Price;
         $this->Qty = (int)$Qty;
         $this->Selected = $Selected;
+        $this->Total = (float)$Total;
         }
     
     public function addExtra($Extra){
@@ -30,22 +32,22 @@ class Item {
 }
 
 //create object
-$myItem = new Item("Burger","100% Grass-fed beef",6.95,'','');
+$myItem = new Item("Burger","100% Grass-fed beef",6.95,'','','');
 $myItem->addExtra("None");
 $myItem->addExtra("Tomatoes");
 $myItem->addExtra("Onion");    
 $items[] = $myItem;
-$myItem = new Item("Fries","Fresh cut fries",3.95,'',''); 
+$myItem = new Item("Fries","Fresh cut fries",3.95,'','',''); 
 $myItem->addExtra("None");
 $myItem->addExtra("Garlic Mayo");
 $myItem->addExtra("Sriracha Mayo");     
 $items[] = $myItem;     
-$myItem = new Item("Vanilla Ice Cream","100% organic milk",3.95,'','');
+$myItem = new Item("Vanilla Ice Cream","100% organic milk",4.95,'','','');
 $myItem->addExtra("None");
 $myItem->addExtra("Oreo cookies");
 $myItem->addExtra("Fresh Berries"); 
 $items[] = $myItem;    
-$myItem = new Item("Salad","Caesar Salad",5.95,'','');
+$myItem = new Item("Salad","Caesar Salad",5.95,'','','');
 $myItem->addExtra("None");
 $myItem->addExtra("Croutons");
 $myItem->addExtra("Bacon");     
@@ -54,14 +56,23 @@ $items[] = $myItem;
 //calculate based on user input
 $items[0]->Qty = $_POST['Qty0'];
 $items[0]->Selected = $_POST["Select0"]; 
+$items[0]->Total = $_POST["Qty0"] * 6.95; 
 $items[1]->Qty = $_POST['Qty1'];
 $items[1]->Selected = $_POST["Select1"]; 
+$items[1]->Total = $_POST["Qty1"] * 3.95;     
 $items[2]->Qty = $_POST['Qty2'];
-$items[2]->Selected = $_POST["Select2"];   
+$items[2]->Selected = $_POST["Select2"];
+$items[2]->Total = $_POST["Qty2"] * 4.95;     
 $items[3]->Qty = $_POST['Qty3'];
-$items[3]->Selected = $_POST["Select3"];          
+$items[3]->Selected = $_POST["Select3"];
+$items[3]->Total = $_POST["Qty3"] * 5.95;     
+
+//calculate total
+$grandtotal = $items[0]->Total + $items[1]->Total + $items[2]->Total + $items[3]->Total 
 ?>
 
+
+    
 <!-- MENU -->     
 <form action="p2_foodtruck_v2.php" method="post">    
 <table>
@@ -166,7 +177,7 @@ $items[3]->Selected = $_POST["Select3"];
             <!-- RECEIPT -->    
             <table>
                 <tr>
-                    <td colspan="4" align="center">
+                    <td colspan="6" align="center">
                         <h1>Receipt</h1>
                     </td>    
                 </tr>
@@ -174,6 +185,7 @@ $items[3]->Selected = $_POST["Select3"];
                     <th>Item</th>
                     <th colspan="2">Extras</th> 
                     <th colspan="2">Qty</th>
+                    <th class="total">Total</th>
                 </tr>
                 <!--First Item-->
                 <tr>
@@ -193,6 +205,9 @@ $items[3]->Selected = $_POST["Select3"];
                     <td>
                         <h3>' . $items[0]->Qty . '</h3>
                     </td>
+                    <td class="total">
+                        <h3>$' . $items[0]->Total . '</h3>
+                    </td>
                 </tr>      
                 <!--Second Item-->
                 <tr>
@@ -204,13 +219,16 @@ $items[3]->Selected = $_POST["Select3"];
                         <h3>' . $items[1]->Selected . '</h3>
                     </td>
                     <td>
-                        <h3>$' . $items[0]->Price . '</h3>
+                        <h3>$' . $items[1]->Price . '</h3>
                     </td>
                     <td>
                         <h3>x</h3>
                     </td>
                     <td>
                         <h3>' . $items[1]->Qty . '</h3>
+                    </td>
+                    <td class="total">
+                        <h3>$' . $items[1]->Total . '</h3>
                     </td>
                 </tr>      
                 <!--Third Item-->
@@ -231,6 +249,9 @@ $items[3]->Selected = $_POST["Select3"];
                     <td>
                         <h3>' . $items[2]->Qty . '</h3>
                     </td>
+                    <td class="total">
+                        <h3>$' . $items[2]->Total . '</h3>
+                    </td>
                 </tr>      
                 <!--Fourth Item-->
                 <tr>
@@ -250,14 +271,17 @@ $items[3]->Selected = $_POST["Select3"];
                     <td>
                         <h3>' . $items[3]->Qty . '</h3>
                     </td>
+                    <td class="total">
+                        <h3>$' . $items[3]->Total . '</h3>
+                    </td>
                 </tr>
                 <!--Totals-->
-                <tr class="total">
-                    <td colspan="3">
+                <tr class="grandtotal">
+                    <td colspan="5" class="border">
                         <h3>SUBTOTAL</h3>
                     </td>
-                    <td>
-                        <h3>' . $items[3]->Qty . '</h3>
+                    <td class="grandtotal">
+                        <h3>$' . $grandtotal . '</h3>
                     </td>
                 </tr>
             </table>
