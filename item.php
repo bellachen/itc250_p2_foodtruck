@@ -1,27 +1,31 @@
 <?php
 //items4.php
 
-$myItem = new Item(1,"Burger","100% Grass-fed beef",6.95);
+$myItem = new Item( 1,"Burger","100% Grass-fed beef",6.95);
 $myItem->addExtra("None");
 $myItem->addExtra("Tomatoes");
 $myItem->addExtra("Onion");    
 $config->items[] = $myItem;
-$myItem = new Item(2,"Fries","Fresh cut fries",3.95);
+
+$myItem = new Item( 2,"Fries","Fresh cut fries",3.95);
 $myItem->addExtra("None");
 $myItem->addExtra("Garlic Mayo");
 $myItem->addExtra("Sriracha Mayo");     
-$config->items[] = $myItem;     
-$myItem = new Item(3,"Vanilla Ice Cream","100% organic milk",4.95);
+$config->items[] = $myItem;   
+
+$myItem = new Item( 3,"Vanilla Ice Cream","100% organic milk",4.95);
 $myItem->addExtra("None");
 $myItem->addExtra("Oreo cookies");
 $myItem->addExtra("Fresh Berries"); 
-$config->items[] = $myItem;    
-$myItem = new Item(4,"Salad","Caesar Salad",5.95);
+$config->items[] = $myItem; 
+
+$myItem = new Item( 4,"Salad","Caesar Salad",5.95);
 $myItem->addExtra("None");
 $myItem->addExtra("Croutons");
 $myItem->addExtra("Bacon");     
-$config->items[] = $myItem;    
-$myItem = new Item(5,"xxxxx","Caesar Salad",7.95);
+$config->items[] = $myItem;   
+
+$myItem = new Item( 5,"xxxxx","Caesar Salad",7.95);
 $myItem->addExtra("None");
 $myItem->addExtra("Croutons");
 $myItem->addExtra("Bacon");     
