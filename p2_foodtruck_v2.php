@@ -97,13 +97,13 @@ $grandtotal = $items[0]->Total + $items[1]->Total + $items[2]->Total + $items[3]
 <table>
     <tr>
         <td colspan="4" align="center">
-            <h1>Menu</h1>
+            <h2>Menu</h2>
         </td>    
     </tr>
     <tr>
-        <th colspan="2">Item</th>
-        <th>Extras</th> 
-        <th>Qty</th>
+        <th colspan="2">ITEM</th>
+        <th>EXTRAS +0.5</th> 
+        <th>QTY</th>
     </tr>
     <!--First Item-->
     <tr>
@@ -184,29 +184,30 @@ $grandtotal = $items[0]->Total + $items[1]->Total + $items[2]->Total + $items[3]
         <td>
             <h3><input type="text" name="Qty3" size="5" pattern="\d{1,4}"></h3>
         </td>
-    </tr>   
-</table>
-    
-<input type="submit" name="submit" value="Submit" class="submit"/>    
+    </tr>
+    <tr>
+        <td colspan="4" align="right">
+            <input type="submit" name="submit" value="Submit" class="submit"/> 
+        </td>
+    </tr>
+</table>   
 </form>    
 
 <?php
     if(isset($_POST['submit'])){
-        if($items[0]->Qty != 0){
-                echo $items[0]->Qty * $items[0]->ExtraCharge;}
         echo '    
             <!-- RECEIPT -->    
             <table>
                 <tr>
                     <td colspan="6" align="center">
-                        <h1>Receipt</h1>
+                        <h2>Receipt</h2>
                     </td>    
                 </tr>
                 <tr>
-                    <th>Item</th>
-                    <th colspan="2">Extras</th> 
-                    <th colspan="2">Qty</th>
-                    <th class="total">Total</th>
+                    <th>ITEM</th>
+                    <th colspan="2">EXTRAS</th> 
+                    <th colspan="2">QTY</th>
+                    <th class="total">TOTAL</th>
                 </tr>';
         
         if($items[0]->Qty != 0){
@@ -311,7 +312,7 @@ $grandtotal = $items[0]->Total + $items[1]->Total + $items[2]->Total + $items[3]
             echo '
                 <!--Totals-->
                 <tr class="grandtotal">
-                    <td colspan="5" class="border">
+                    <td colspan="5">
                         <h3>SUBTOTAL</h3>
                     </td>
                     <td class="grandtotal">
@@ -319,6 +320,8 @@ $grandtotal = $items[0]->Total + $items[1]->Total + $items[2]->Total + $items[3]
                     </td>
                 </tr>
             </table>
+            
+            <h1>Thank you!<h1>
         ';                  
     }
 ?>
