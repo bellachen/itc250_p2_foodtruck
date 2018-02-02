@@ -8,7 +8,8 @@
 <?php
     
 //create class
-class Item {
+class Item 
+{
     public $Name = '';
     public $Description = '';
     public $Price = 0;
@@ -18,7 +19,8 @@ class Item {
     public $Total = 0;
     public $ExtraCharge = 0;
 
-    public function __construct($Name,$Description,$Price,$Qty,$Selected,$Total,$ExtraCharge) {
+    public function __construct($Name,$Description,$Price,$Qty,$Selected,$Total,$ExtraCharge) 
+    {
         $this->Name = $Name;
         $this->Description = $Description;
         $this->Price = (float)$Price;
@@ -26,30 +28,32 @@ class Item {
         $this->Selected = $Selected;
         $this->Total = (float)$Total;
         $this->ExtraCharge = (float)$ExtraCharge;
-        }
+        }//end of construct function
     
-    public function addExtra($Extra){
+    public function addExtra($Extra)
+    {
         $this->Extras[] = $Extra;
-    }
-}
+    }//end of addExtra function
+    
+}//end of class
 
 //create object
-$myItem = new Item("Burger","100% Grass-fed beef",6.95,'','','',0.5);
+$myItem = new Item("Burger", "100% Grass-fed beef", 6.95, '', '', '', 0.5);
 $myItem->addExtra("None");
 $myItem->addExtra("Tomatoes");
 $myItem->addExtra("Onion");    
 $items[] = $myItem;
-$myItem = new Item("Fries","Fresh cut fries",3.95,'','','',0.5); 
+$myItem = new Item("Fries", "Fresh cut fries", 3.95, '', '', '', 0.5); 
 $myItem->addExtra("None");
 $myItem->addExtra("Garlic Mayo");
 $myItem->addExtra("Sriracha Mayo");     
 $items[] = $myItem;     
-$myItem = new Item("Vanilla Ice Cream","100% organic milk",4.95,'','','',0.5);
+$myItem = new Item("Vanilla Ice Cream", "100% organic milk", 4.95, '', '', '', 0.5);
 $myItem->addExtra("None");
 $myItem->addExtra("Oreo cookies");
 $myItem->addExtra("Fresh Berries"); 
 $items[] = $myItem;    
-$myItem = new Item("Salad","Caesar Salad",5.95,'','','',0.5);
+$myItem = new Item("Salad", "Caesar Salad", 5.95, '', '', '', 0.5);
 $myItem->addExtra("None");
 $myItem->addExtra("Croutons");
 $myItem->addExtra("Bacon");     
@@ -58,7 +62,7 @@ $items[] = $myItem;
 //calculate based on user input
 $items[0]->Qty = $_POST['Qty0'];
 $items[0]->Selected = $_POST["Select0"]; 
-if($_POST["Select0"] == "None" || ''){
+if($_POST["Select0"] == "None" || '') {
     $items[0]->Total = $_POST["Qty0"] * $items[0]->Price; 
 } else {
     $items[0]->Total = ($_POST["Qty0"] * $items[0]->Price) + ($_POST["Qty0"] * $items[0]->ExtraCharge); 
@@ -66,7 +70,7 @@ if($_POST["Select0"] == "None" || ''){
 
 $items[1]->Qty = $_POST['Qty1'];
 $items[1]->Selected = $_POST["Select1"]; 
-if($_POST["Select1"] == "None" || ''){
+if($_POST["Select1"] == "None" || '') {
     $items[1]->Total = $_POST["Qty1"] * $items[1]->Price; 
 } else {
     $items[1]->Total = ($_POST["Qty1"] * $items[1]->Price) + ($_POST["Qty1"] * $items[1]->ExtraCharge); 
@@ -74,7 +78,7 @@ if($_POST["Select1"] == "None" || ''){
 
 $items[2]->Qty = $_POST['Qty2'];
 $items[2]->Selected = $_POST["Select2"];
-if($_POST["Select2"] == "None" ||''){
+if($_POST["Select2"] == "None" ||'') {
     $items[2]->Total = $_POST["Qty2"] * $items[2]->Price; 
 } else {
     $items[2]->Total = ($_POST["Qty2"] * $items[2]->Price) + ($_POST["Qty2"] * $items[2]->ExtraCharge); 
@@ -82,7 +86,7 @@ if($_POST["Select2"] == "None" ||''){
 
 $items[3]->Qty = $_POST['Qty3'];
 $items[3]->Selected = $_POST["Select3"];
-if($_POST["Select3"] == "None" ||''){
+if($_POST["Select3"] == "None" ||'') {
     $items[3]->Total = $_POST["Qty3"] * $items[3]->Price; 
 } else {
     $items[3]->Total = ($_POST["Qty3"] * $items[3]->Price) + ($_POST["Qty3"] * $items[3]->ExtraCharge); 
@@ -194,7 +198,7 @@ $grandtotal = $items[0]->Total + $items[1]->Total + $items[2]->Total + $items[3]
 </form>    
 
 <?php
-    if(isset($_POST['submit'])){
+    if(isset($_POST['submit'])) {
         echo '    
             <!-- RECEIPT -->    
             <table>
@@ -210,7 +214,7 @@ $grandtotal = $items[0]->Total + $items[1]->Total + $items[2]->Total + $items[3]
                     <th class="total">TOTAL</th>
                 </tr>';
         
-        if($items[0]->Qty != 0){
+        if($items[0]->Qty != 0) {
                 echo '
                 <!--First Item-->
                 <tr>
@@ -235,7 +239,7 @@ $grandtotal = $items[0]->Total + $items[1]->Total + $items[2]->Total + $items[3]
                     </td>
                 </tr> ';}
         
-        if($items[1]->Qty != 0){
+        if($items[1]->Qty != 0) {
                 echo '
                 <!--Second Item-->
                 <tr>
@@ -260,7 +264,7 @@ $grandtotal = $items[0]->Total + $items[1]->Total + $items[2]->Total + $items[3]
                     </td>
                 </tr>';}
         
-        if($items[2]->Qty != 0){
+        if($items[2]->Qty != 0) {
                 echo '
                 <!--Third Item-->
                 <tr>
@@ -285,7 +289,7 @@ $grandtotal = $items[0]->Total + $items[1]->Total + $items[2]->Total + $items[3]
                     </td>
                 </tr>';}
         
-        if($items[3]->Qty != 0){
+        if($items[3]->Qty != 0) {
                 echo '
                 <!--Fourth Item-->
                 <tr>
