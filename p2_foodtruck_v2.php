@@ -73,7 +73,7 @@ foreach($items as $item){
 }
 
 ?>        
-    
+      
 <!-- MENU -->     
 <form action="p2_foodtruck_v2.php" method="post">    
 <table>
@@ -84,6 +84,7 @@ foreach($items as $item){
     </tr>
     <tr>
         <th colspan="2">ITEM</th>
+        <th>EXTRAS +0.5</th>
         <th>QTY</th>
     </tr>
     
@@ -120,7 +121,7 @@ foreach($items as $item){
     
 </table>
 </form>
-    
+   
     <?php
         if(isset($_POST['submit'])){
         echo '    
@@ -133,6 +134,7 @@ foreach($items as $item){
                 </tr>
                 <tr>
                     <th>ITEM</th> 
+                    <th colspan="2">EXTRAS</th> 
                     <th colspan="2">QTY</th>
                     <th class="total">TOTAL</th>
                 </tr>';
