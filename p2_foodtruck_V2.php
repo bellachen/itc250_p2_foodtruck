@@ -9,56 +9,49 @@
 // Birth of an array
 
 
-$myItem = new Item(1,"Burger","Burger is 100% augus Beef",19.95);
-$myItem->addExtra("onins");
-$myItem->addExtra("Black Pepepr");
-$myItem->addExtra("Green pepepr");
-$items[] = $myItem;
 
-$myItem = new Item(2,"fries","Fries is on sale this week",1.95);
-$myItem->addExtra("chochlate");
-$myItem->addExtra("Nuts");
-$myItem->addExtra("sprnkas");
-$items[] = $myItem;    
-
-
-/*
-$myItem[] = new Item(1,"Taco","Out taco is nice",4.95);
-$myItem[] = new Item(2,"Sundae","sundae is on sale",10.95);
-$myItem[] = new Item(3,"ICE CREAM","Today is a hot day for ICE",3.00);
-$myItem[] = new Item(4,"Steak","midume rear",100.95);
-*/
-
-
-//$myItem = new Item(1,"Taco","Out taco is nice",4.95);
-
-echo '<pre>';
-var_dump ($items);
-echo '</pre>';
-
-
-
-class Item{
-    
-    public $ID= 0;
-    public $Name= '';
-    public $Description= 0;
-    public $Price= 0;
+class Item {
+    public $Name = '';
+    public $Description = '';
+    public $Price = 0;
+    public $Qty = 0;
+    public $Selected = '';
     public $Extras = array();
+    public $Total = 0;
+    public $ExtraCharge = 0;
     
-    public function __construct($ID,$Name,$Description,$Price)
-    
-    {
-        $this->ID = (int) $ID;
+    public function __construct($Name,$Description,$Price,$Qty,$Selected,$Total,$ExtraCharge) {
         $this->Name = $Name;
         $this->Description = $Description;
-        $this->Price = (float) $Price;
-        
-    }// end construct 
+        $this->Price = (float)$Price;
+        $this->Qty = (int)$Qty;
+        $this->Selected = $Selected;
+        $this->Total = (float)$Total;
+        $this->ExtraCharge = (float)$ExtraCharge;
+        }
     
-    public function addExtra($extra)
-    {
-        $this->Extras[]= $extra;
-        
-        
-    }//end addExtra
+    public function addExtra($Extra){
+        $this->Extras[] = $Extra;
+    }
+}
+//create object
+$myItem = new Item("Burger","100% Grass-fed beef",6.95,'','','',0.5);
+$myItem->addExtra("None");
+$myItem->addExtra("Tomatoes");
+$myItem->addExtra("Onion");    
+$items[] = $myItem;
+$myItem = new Item("Fries","Fresh cut fries",3.95,'','','',0.5); 
+$myItem->addExtra("None");
+$myItem->addExtra("Garlic Mayo");
+$myItem->addExtra("Sriracha Mayo");     
+$items[] = $myItem;     
+$myItem = new Item("IceCream","100% organic milk",4.95,'','','',0.5);
+$myItem->addExtra("None");
+$myItem->addExtra("Oreo cookies");
+$myItem->addExtra("Fresh Berries"); 
+$items[] = $myItem;    
+$myItem = new Item("Salad","Caesar Salad",5.95,'','','',0.5);
+$myItem->addExtra("None");
+$myItem->addExtra("Croutons");
+$myItem->addExtra("Bacon");     
+$items[] = $myItem;     
