@@ -1,0 +1,33 @@
+<?php
+//food truck items
+
+$myItem->addExtra = new Item(1,"Burger","100% Beef Burger", 6.95);
+$myItem->addExtra("Tomatoes");
+$myItem->addExtra("Onions");
+$config->items[] =$myItem;
+
+$myItem = new Item(2,"Fries","Fresh Cut Fries",3.50);
+$myItem->addExtra("Garlic Mayo");
+$myItem->addExtra("Sriracha Mayo");
+$config->items[] =$myItem;
+
+$myItem = new Item(3,"Vanilla Ice Cream","100% Organic Milk",4.50);
+$myItem->addExtra("Oreo Cookies");
+$myItem->addExtra("Fresh Berries");
+$config->items[] =$myItem;
+
+$myItem = new Item(4,"Salad","Caesar Salad",5.00);
+$myItem->addExtra("Croutons");
+$myItem->addExtra("Bacon Bits");
+$config->items[] =$myItem;
+
+
+$myItem = new Item(4,"Salad","Caesar Salad",5.00);
+$myItem->addExtra("Croutons");
+$myItem->addExtra("Bacon Bits");
+$config->items[] =$myItem;
+
+                    
+                
+        // array must go through getItem($id)
+ 
